@@ -3,7 +3,7 @@ from skimage.filters import median
 from skimage.morphology import ball
 from PIL import Image
 lena = load_image('lena.png')
-clean_lena = median(lena, ball(3))
-edge_lena = edge_detection(clean_lena)
-edge_image = Image.fromarray(edge_lena)
+clean = median(lena, ball(3))
+binary = l_edge > 100 
+edge_image = Image.fromarray(np.uint8(binary * 255))
 edge_image.save('my_edges.png')
